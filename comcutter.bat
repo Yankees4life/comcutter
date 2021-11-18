@@ -8,7 +8,7 @@ for /f "usebackq tokens=*" %%a in (`bat video.ffsplit`) do ffmpeg -i video.ts %%
 REM Merging the cuts to one file and remuxing to mp4
 for /f "usebackq tokens=*" %%i in (`fd "segment*"`) do echo file %%i >> edit.txt
 ffmpeg -f concat -i edit.txt -c copy edit.ts
-move /y edit.mp4 %1
+move /y edit.ts %1
 REM Cleanup input files
 for /f "usebackq tokens=*" %%b in (`fd "segment*"`) do del /f %%b
 del /f edit.txt
