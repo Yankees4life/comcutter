@@ -7,8 +7,8 @@ copy "%~dpn1.ffsplit" "video.ffsplit"
 for /f "usebackq tokens=*" %%a in (`bat video.ffsplit`) do ffmpeg -i video.ts %%a
 REM Merging the cuts to one file and remuxing to mp4
 for /f "usebackq tokens=*" %%i in (`fd "segment*"`) do echo file %%i >> edit.txt
-ffmpeg -f concat -i edit.txt -c copy edit.mp4
-rename "edit.mp4" "%~dpn1.mp4"
+ffmpeg -f concat -i edit.txt -c copy edit.ts
+move /y edit.mp4 %1
 REM Cleanup input files
 for /f "usebackq tokens=*" %%b in (`fd "segment*"`) do del /f %%b
 del /f edit.txt
@@ -18,4 +18,3 @@ del /f "%~dpn1.txt"
 del /f "%~dpn1.log"
 del /f "%~dpn1.ffsplit"
 del /f "%~dpn1.edl"
-del /f %1
