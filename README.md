@@ -10,6 +10,5 @@ Ffmpeg
 
 Bat (a fork of cat for windows) (https://github.com/sharkdp/bat)
 
-Fd (https://github.com/sharkdp/fd)
 
 Most of these dependencies can be installed from most popular package managers (eg. choco, scoop). 
